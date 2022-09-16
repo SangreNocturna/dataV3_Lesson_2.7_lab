@@ -41,6 +41,19 @@ JOIN sakila.city c
 ON a.city_id = c.city_id
 ;
 
+-- 6. List each film and the number of actors who are listed for that film
+SELECT f.film_id, f.title, count(fa.actor_id)
+FROM sakila.film f
+JOIN sakila.film_actor fa
+ON f.film_id= fa.film_id
+GROUP BY f.film_id
+ORDER BY count(fa.actor_id) DESC
+;
+
+
+-- 7. Using the tables payment and customer and the JOIN command, list the total paid by each customer. List the customers alphabetically by last name
+
+
 
 
 
