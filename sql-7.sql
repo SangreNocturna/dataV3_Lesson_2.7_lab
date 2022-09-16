@@ -33,6 +33,13 @@ GROUP BY c.first_name
 ORDER BY count(r.rental_id) DESC;
 
 -- 5. Display the first and last names, as well as the address, of each staff member
+SELECT s.first_name, s.last_name, a.address_id, a.address, c.city
+FROM sakila.staff s
+JOIN sakila.address a
+ON s.address_id = a.address_id
+JOIN sakila.city c 
+ON a.city_id = c.city_id
+;
 
 
 
