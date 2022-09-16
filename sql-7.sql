@@ -25,7 +25,7 @@ ON a.actor_id = f.actor_id
 GROUP BY a.first_name;
 
 -- 4. Most active customer (the customer that has rented the most number of films)
-SELECT c.first_name, c.last_name, count(r.rental_id)
+SELECT c.first_name, c.last_name, count(r.rental_id) as total_rental
 FROM sakila.customer c
 JOIN sakila.rental r
 ON c.customer_id = r.customer_id
@@ -52,11 +52,10 @@ ORDER BY count(fa.actor_id) DESC
 
 
 -- 7. Using the tables payment and customer and the JOIN command, list the total paid by each customer. List the customers alphabetically by last name
-
-
-
-
-
- 
-
+SELECT c.last_name, c.first_name, count(p.amount) as total_paid
+FROM sakila.payment p
+JOIN sakila.customer c
+ON p.customer_id = c.customer_id
+GROUP BY c.first_name
+ORDER BY c.last_name ASC;
 
